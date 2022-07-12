@@ -1,0 +1,3 @@
+vt-py
+py2app
+auto-py-to-exe
