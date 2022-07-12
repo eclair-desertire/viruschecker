@@ -2,17 +2,17 @@ import tkinter as tk
 from tkinter import ttk
 import asyncio
 from tkinter import filedialog
+from tkinter import messagebox
 import apikey # your own file with YOUR API KEY, you can get it on virustotal site
 import vt
 from tkinter import *
-import threading
 
 class App:
     async def exec(self):
         self.window = Window(asyncio.get_event_loop())
         await self.window.show()
 
-class Window(Tk.tk):
+class Window(tk.Tk):
     def __init__(self, loop):
         self.loop = loop
         self.client=vt.Client(apikey.api_key)
@@ -44,6 +44,7 @@ class Window(Tk.tk):
         url = self.client.get_object("/urls/{}".format(analysis))
 
         print(url.times_submitted)
+        messagebox.showinfo("Information about link",f"Times submitted:{url.times_submitted}")
         print(url.last_analysis_stats)
         await asyncio.sleep(0)
 
