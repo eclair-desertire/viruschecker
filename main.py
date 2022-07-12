@@ -1,12 +1,19 @@
-
+import tkinter as tk
+from tkinter import ttk
+import asyncio
 from tkinter import filedialog
 import apikey # your own file with YOUR API KEY, you can get it on virustotal site
 import vt
 from tkinter import *
 import threading
 
+class App:
+    async def exec(self):
+        self.window = Window(asyncio.get_event_loop())
+        await self.window.show()
 
-
+class Window(Tk.tk):
+    pass
 root=Tk()
 root.geometry("500x300")
 root.resizable(0,0)
