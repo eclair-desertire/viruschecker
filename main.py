@@ -22,10 +22,15 @@ link_enter=Entry(root, width=50, textvariable=vir_url).place(x=20,y=40)
 def scan_file():
     file=filedialog.askopenfile()
 
-def scan_url():
-    pass
+def scan_link():
+    client.scan_url(vir_url.get())
+    analysis = vt.url_id(vir_url.get())
+    url = client.get_object("/urls/{}".format(analysis))
 
-Button(root,text="Check url",command=threading.Thread(target=scan_url).start).place(x=190,y=70)
+    print(url.times_submitted)
+    print(url.last_analysis_stats)
+
+Button(root,text="Check url",command=threading.Thread(target=scan_link).start).place(x=190,y=70)
 Button(root, text="Select File to check",command=threading.Thread(target=scan_file).start).place(x=20,y=200)
 client=vt.Client(apikey.api_key)
 
