@@ -62,7 +62,6 @@ asyncio.run(App().exec())
 
 
 
-#root.filename=filedialog.askopenfilename(initialdir="/",title="Select a file",filetypes=(("all files","*.*")))
 
 
 
